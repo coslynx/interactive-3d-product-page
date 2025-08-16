@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Reset default browser styles */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+/* Apply global styles */
+body {
+  font-family: Inter, sans-serif;
+  line-height: 1.6;
+  color: theme('colors.text');
+  background-color: theme('colors.surface');
+  transition: background-color 0.3s, color 0.3s;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+/* Base */
+.base {
+  @apply container mx-auto px-4 py-8;
+}
+
+/* High contrast for accessibility */
+.high-contrast {
+  color: theme('colors.text.highContrast');
+  background-color: theme('colors.surface.highContrast');
+}
+
+/* 3D canvas integration */
+canvas {
+  @apply outline-none;
+}
+
+/* Theme-aware color palette */
+:root {
+  --primary: theme('colors.blue.500');
+  --secondary: theme('colors.yellow.500');
+  --surface: theme('colors.white');
+  --text: theme('colors.gray.800');
+  --accent: theme('colors.green.500');
+  --error: theme('colors.red.500');
+  --warning: theme('colors.yellow.300');
+}
+
+/* Dark mode theme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --surface: theme('colors.gray.900');
+    --text: theme('colors.gray.100');
+  }
+}
+
+/* Responsive design using Tailwind breakpoints */
+@layer components {
+  .responsive-text {
+    @apply text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl;
+  }
+}
